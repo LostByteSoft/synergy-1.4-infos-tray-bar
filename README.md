@@ -8,6 +8,7 @@ Shoy an icon in the tray bar with options :
 
 ![Screenshot](Picture_1.jpg)
 ![Screenshot](Picture_2.jpg)
+Click on show gui show the gui interface of synergy.
 ![Screenshot](Picture_3.jpg)
 
 Thera are NO tray icon visible in version 1.4 so i made one ...
