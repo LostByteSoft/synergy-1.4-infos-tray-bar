@@ -1,8 +1,8 @@
 ;;--- Head --- AHK ---
 
-;; Just wait Synergy error(s) and close it
-;; Work with SynergyInstaller-1.3.1.exe
-;; Version 2018-04-16 was the last version !!! I switch to version synergy-1.4.16-r1969-Windows-x64.exe for compatibility with linux.
+;; Tested versions of Synergy
+;; Version synergy-1.4.16-r1969-Windows-x64.exe
+;; Version synergy-1.4.17-r2055-Windows-x86.msi
 
 ;;--- Softwares options ---
 
@@ -12,16 +12,18 @@
 
 	SetWorkingDir, %A_ScriptDir%
 
-	SetEnv, title, Synergy Infos 1.4.16
-	SetEnv, mode, Synergy synergy-1.4.16-r1969-Windows-x64.exe
+	SetEnv, title, Synergy Infos 1.4.17
+	SetEnv, mode, synergy-1.4.17-r2055-Windows-x86.msi
 	SetEnv, Author, LostByteSoft
-	SetEnv, version, Version 2018-04-18-0428
+	SetEnv, version, Version 2018-05-08-0604
 	SetEnv, icofolder, C:\Program Files\Common Files
 	SetEnv, logoicon, ico_Synergy.ico
 	SetENv, debug, 0
 
 	;; Specific Icons (or files)
+	FileInstall, Synergy_Infos.ahk, Synergy_Infos.ahk,0
 	FileInstall, ico_Synergy.ico, %icofolder%\ico_Synergy.ico, 0
+	FileInstall, ico_txt.ico, %icofolder%\ico_txt.ico, 0
 
 	;; Common ico
 	FileInstall, SharedIcons\ico_about.ico, %icofolder%\ico_about.ico, 0
@@ -54,7 +56,7 @@
 	Menu, tray, add,
 	Menu, tray, add, --== Control ==--, about
 	Menu, Tray, Icon, --== Control ==--, %icofolder%\ico_options.ico
-	menu, tray, add, Show Gui (Same as click), gui			; Default gui open
+	menu, tray, add, Show Gui (Same as click), gui				; Default gui open
 	Menu, Tray, Icon, Show Gui (Same as click), %icofolder%\ico_loupe.ico
 	Menu, Tray, Default, Show Gui (Same as click)
 	Menu, Tray, Click, 1
@@ -62,6 +64,8 @@
 	Menu, Tray, Icon, Set Debug (Toggle), %icofolder%\ico_debug.ico
 	Menu, tray, add, Open A_WorkingDir, A_WorkingDir			; open where the exe is
 	Menu, Tray, Icon, Open A_WorkingDir, %icofolder%\ico_folder.ico
+	Menu, tray, add, Open Source, Source
+	Menu, Tray, Icon, Open Source, %icofolder%\ico_txt.ico
 	Menu, tray, add,
 	Menu, tray, add, Exit %title%, ExitApp					; Close exit program
 	Menu, Tray, Icon, Exit %title%, %icofolder%\ico_shut.ico
@@ -99,11 +103,9 @@ If ProcessExist("Synergys.exe")
 	goto, start
 
 server:
-	Menu, Tray, Tip, %title%`nRunning = Server`n`nLocalIp = %A_IPAddress1%`nName = %A_ComputerName%
+	Menu, Tray, Tip, %title%`nRunning = Server`nLocalIp = %A_IPAddress1%`nName = %A_ComputerName%
 	SetEnv, running, Server
 	IfEqual, debug, 1, MsgBox Synergys.exe exists. If ProcessExist("Synergys.exe")
-	;;WinWait, Synergy 1.3.1 Server
-	;;WinClose, Synergy 1.3.1 Server
 	sleep, 500000
 	goto, server
 
@@ -111,8 +113,6 @@ client:
 	Menu, Tray, Tip, %title%`nRunning = Client`n`nLocalIp = %A_IPAddress1%`nName = %A_ComputerName%
 	SetEnv, running, Client
 	IfEqual, debug, 1, MsgBox Synergyc.exe exists. If ProcessExist("Synergyc.exe")
-	;;WinWait, Synergy 1.3.1 Server
-	;;WinClose, Synergy 1.3.1 Server
 	sleep, 500000
 	goto, client
 
@@ -122,7 +122,12 @@ gui:
 	return
 
 	guierror:
-	MsgBox, 0, %title% Synergy version 1.4.16 was not installed in " C:\Program Files\Synergy\ "
+	MsgBox, 0, %title% Synergy version 1.4 was not installed in " C:\Program Files\Synergy\ "
+	return
+
+source:
+	FileInstall, Synergy_Infos.ahk, Synergy_Infos.ahk, 1
+	run, "%A_ScriptDir%\Synergy_Infos.ahk"
 	return
 
 ;;--- Debug ---
@@ -220,7 +225,7 @@ A_WorkingDir:
 	Return
 
 webpage:
-	;run, https://github.com/LostByteSoft/%title%
+	run, https://github.com/LostByteSoft
 	Return
 
 ;;--- End of script ---
