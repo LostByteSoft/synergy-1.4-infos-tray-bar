@@ -1,8 +1,7 @@
 ;;--- Head --- AHK ---
 
 ;; Tested versions of Synergy
-;; Version synergy-1.4.16-r1969-Windows-x64.exe
-;; Version synergy-1.4.17-r2055-Windows-x86.msi
+;; Version synergy-v1.8.8-stable-Windows-x86.msi
 
 ;;--- Softwares options ---
 
@@ -12,16 +11,16 @@
 
 	SetWorkingDir, %A_ScriptDir%
 
-	SetEnv, title, Synergy Infos 1.4.17
-	SetEnv, mode, synergy-1.4.17-r2055-Windows-x86.msi
+	SetEnv, title, Synergy Infos 1.8.8
+	SetEnv, mode, synergy-v1.8.8-stable-Windows-x86.msi
 	SetEnv, Author, LostByteSoft
-	SetEnv, version, Version 2018-05-08-0604
+	SetEnv, version, Version 2020-05-23
 	SetEnv, icofolder, C:\Program Files\Common Files
 	SetEnv, logoicon, ico_Synergy.ico
 	SetENv, debug, 0
 
 	;; Specific Icons (or files)
-	FileInstall, Synergy_Infos.ahk, Synergy_Infos.ahk,0
+	;; FileInstall, Synergy_Infos.ahk, Synergy_Infos.ahk,0
 	FileInstall, ico_Synergy.ico, %icofolder%\ico_Synergy.ico, 0
 	FileInstall, ico_txt.ico, %icofolder%\ico_txt.ico, 0
 
@@ -117,12 +116,12 @@ client:
 	goto, client
 
 gui:
-	IfNotExist, C:\Program Files\Synergy\synergy.exe, goto, guierror
-	run, C:\Program Files\Synergy\synergy.exe
+	IfNotExist, C:\Program Files (x86)\Synergy\synergy.exe, goto, guierror
+	run, C:\Program Files (x86)\Synergy\synergy.exe
 	return
 
 	guierror:
-	MsgBox, 0, %title% Synergy version 1.4 was not installed in " C:\Program Files\Synergy\ "
+	MsgBox, 0, %title% Synergy version 1.8.8 was not installed in " C:\Program Files (x86)\Synergy "
 	return
 
 source:
