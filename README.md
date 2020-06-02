@@ -2,7 +2,11 @@
 
 For use with synergy-v1.8.8-stable-Windows-x86.msi (or other 1.X.X versions)
 
-I change to version 1.8 for compatibility with linux and win10
+I change to version 1.8 for compatibility with linux x64 and win10 x64.
+
+Windows 64 bit required.
+
+Compatibility: Win 7 , Win 8 , Win 8.1 , Win 10
 
 Shoy an icon in the tray bar with options :
 
