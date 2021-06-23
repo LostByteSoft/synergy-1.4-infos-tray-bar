@@ -1,6 +1,6 @@
 ;;--- Head --- AHK ---
 
-;; Tested versions of Synergy
+;; Tested versions of Synergy (Tested stable)
 ;; Version synergy-v1.8.8-stable-Windows-x86.msi
 
 ;;--- Softwares options ---
@@ -14,13 +14,14 @@
 	SetEnv, title, Synergy Infos 1.8.8
 	SetEnv, mode, synergy-v1.8.8-stable-Windows-x86.msi
 	SetEnv, Author, LostByteSoft
-	SetEnv, version, Version 2020-05-27
+	SetEnv, version, Version 2021-06-23
 	SetEnv, icofolder, C:\Program Files\Common Files
 	SetEnv, logoicon, ico_Synergy.ico
 	SetENv, debug, 0
+	SetEnv, comp, w7 w8 w8.1 w10 w11 (x64)
 
 	;; Specific Icons (or files)
-	FileInstall, ico_Synergy.ico, %icofolder%\ico_Synergy.ico, 0
+	FileInstall, SharedIcons\ico_Synergy.ico, %icofolder%\ico_Synergy.ico, 0
 
 	;; Common ico
 	FileInstall, SharedIcons\ico_about.ico, %icofolder%\ico_about.ico, 0
@@ -194,7 +195,7 @@ author:
 	Return
 
 secret:
-	MsgBox, 0, %title% - SECRET MsgBox, title=%title%`nmode=%mode%`nversion=%version%`nauthor=%author%`nLogoIcon=%logoicon%`n`nDebug=%debug%`nA_ScriptDir=%A_ScriptDir%\`nA_WorkingDir=%A_WorkingDir%\`nIcoFolder=%icofolder%\`n`nClipboard (if text)=%clipboard%
+	MsgBox, 0, %title% - SECRET MsgBox, title=%title%`nmode=%mode%`nversion=%version%`nauthor=%author%`nLogoIcon=%logoicon%`n`nDebug=%debug%`nA_ScriptDir=%A_ScriptDir%\`nA_WorkingDir=%A_WorkingDir%\`nIcoFolder=%icofolder%\`n`nCompatibility=%comp%`n`nClipboard (if text)=%clipboard%
 	Return
 
 GuiLogo:

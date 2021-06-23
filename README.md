@@ -17,4 +17,11 @@ Click on show gui show the gui interface of synergy.
 
 ![Screenshot](Picture_3.jpg)
 
-Thera are NO tray icon visible in version 1.8.8 so i made one ...
+Thera are NO tray icon visible in version 1.X.X so i made one ...
+
+
+Get it here:
+
+https://symless.com/synergy
+
+https://symless.com/synergy/releases/synergy-1-13-release-candidate-2
